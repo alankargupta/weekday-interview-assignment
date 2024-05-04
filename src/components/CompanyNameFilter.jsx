@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Autocomplete,Chip,TextField } from '@mui/material';
 import { addCompanyName } from '../redux/filtersSlice';
+import {Box} from '@mui/material';
 
 function CompanyNameFilter() {
     const [value, setValue] = React.useState([]);
@@ -15,7 +16,6 @@ function CompanyNameFilter() {
     },[value,dispatch])
 
     return (
-        
         <Autocomplete
             multiple
             id="tags-filled"
@@ -31,11 +31,10 @@ function CompanyNameFilter() {
             renderInput={(params) => (
                 <TextField
                     {...params}
-                    variant="filled"
-                    label="Seatch Company Name"
+                    label="Search Company Name"
                 />
             )}
-            sx={{width:"200px",borderColor:"black",height:"20px"}}
+            sx={{width:"200px",marginTop:"10px",borderColor:"black",borderWidth:4}}
         />
     );
 }

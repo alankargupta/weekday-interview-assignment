@@ -8,10 +8,10 @@ function Body() {
     const dispatch = useDispatch()
     const limit = 10
     const [offset, setOffset] = useState(0)
+
     async function fetchJobs() {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-
         const body = JSON.stringify({
             "limit": limit,
             "offset": offset
@@ -28,9 +28,23 @@ function Body() {
         dispatch(addJobs(json.jdList))
 
     }
+
+    const handleScroll = () => {
+        if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+            setOffset(prevOffset => prevOffset + limit)
+        }
+    }
+    useEffect(()=>{
+          fetchJobs()
+    },[offset])
+
     useEffect(() => {
         fetchJobs()
+        window.addEventListener('scroll', handleScroll);
+
+        return () => window.removeEventListener('scroll', handleScroll)
     }, [])
+
     return (
         <Grid container spacing={{ xs: 3 }}>
             <Grid item xs="12">

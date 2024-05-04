@@ -14,7 +14,7 @@ function Filters() {
     dispatch(addCompanies(companyNames))},[jobs,dispatch])
 
     return(
-        <Box sx={{padding:"4px"}} ><CompanyNameFilter/></Box>)
+        <CompanyNameFilter/>)
     
 }
 

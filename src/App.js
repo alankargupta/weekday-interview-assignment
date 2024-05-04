@@ -8,7 +8,7 @@ function App() {
   return (
     <Provider store={appStore}>
       <Container>
-        <Box sx={{marginTop:"10px",marginBottom:"30px"}}>
+        <Box sx={{ marginBottom:"10px",height:"auto", position:"sticky"}}>
           <Filters />
         </Box>
         <Body />
