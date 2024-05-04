@@ -8,10 +8,7 @@ function Body() {
     const dispatch = useDispatch()
     const limit = 10
     const [offset, setOffset] = useState(0)
-    useEffect(() => {
-        fetchJobs()
-    }, [])
-    const fetchJobs = async () => {
+    async function fetchJobs() {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -28,9 +25,12 @@ function Body() {
 
         const result = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions)
         const json = await result.json()
-        dispatch(addJobs(...json.jdList))
+        dispatch(addJobs(json.jdList))
 
     }
+    useEffect(() => {
+        fetchJobs()
+    }, [])
     return (
         <Grid container spacing={{ xs: 3 }}>
             <Grid item xs="12">
