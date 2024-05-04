@@ -5,7 +5,7 @@ import CommonFilter from './CommonFilter';
 
 function CompanyNameFilter() {
     const [value, setValue] = React.useState([]);
-    const options = useSelector((store)=>store.companies.companies)
+    const options = useSelector((store)=>store.filterOptions.companies)
     
     const dispatch = useDispatch()
     useEffect(()=>{

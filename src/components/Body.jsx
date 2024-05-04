@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { addJobs } from '../redux/jobsSlice'
 import { useDispatch } from 'react-redux'
 import Jobs from './Jobs'
-import { Grid } from '@mui/material'
+import { Grid,Box } from '@mui/material'
+import Filters from './Filters'
 
 function Body() {
     const dispatch = useDispatch()
@@ -45,6 +46,8 @@ function Body() {
 
     return (
         <Grid container spacing={{ xs: 3 }}>
+                        <Box sx={{marginTop:"20px"}}><Filters/></Box>
+
             <Grid item xs="12">
                 <Grid container spacing={{ xs: 3 }}>
                     <Jobs />

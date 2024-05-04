@@ -1,15 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import jobsSlice from "./jobsSlice";
-import companyNamesSlice from "./companyNamesSlice";
 import filtersSlice from "./filtersSlice";
-import rolesSlice from "./rolesSlice";
+import filterOptionsSlice from "./filterOptionsSlice";
 
 
 const appStore = configureStore({
     reducer:{
       jobs:jobsSlice,
-      companies:companyNamesSlice,
-      roles:rolesSlice,
+      filterOptions:filterOptionsSlice,
       filters:filtersSlice
     }
 })

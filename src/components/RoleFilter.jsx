@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 function RoleFilter() {
     const [value, setValue] = React.useState([]);
-    const options = useSelector((store)=>store.roles.roles)
+    const options = useSelector((store)=>store.filterOptions.roles)
     
     const dispatch = useDispatch()
     React.useEffect(()=>{

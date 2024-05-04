@@ -8,9 +8,9 @@ function App() {
   return (
     <Provider store={appStore}>
       <Container>
-        <Box sx={{ marginBottom:"10px",height:"auto", position:"sticky"}}>
+        {/* <Box sx={{ marginBottom:"10px",height:"auto", position:"sticky"}}>
           <Filters />
-        </Box>
+        </Box> */}
         <Body />
       </Container>
     </Provider>
