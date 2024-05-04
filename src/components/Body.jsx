@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { addJobs } from '../redux/jobsSlice'
 import { useDispatch } from 'react-redux'
 import Jobs from './Jobs'
+import { Grid } from '@mui/material'
 
 function Body() {
     const dispatch = useDispatch()
@@ -9,7 +10,7 @@ function Body() {
     const [offset, setOffset] = useState(0)
     useEffect(() => {
         fetchJobs()
-    },[])
+    }, [])
     const fetchJobs = async () => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -27,11 +28,17 @@ function Body() {
 
         const result = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions)
         const json = await result.json()
-        dispatch(addJobs(json))
+        dispatch(addJobs(...json.jdList))
 
     }
-    return(
-        <Jobs/>
+    return (
+        <Grid container spacing={{ xs: 3 }}>
+            <Grid item xs="12">
+                <Grid container spacing={{ xs: 3 }}>
+                    <Jobs />
+                </Grid>
+            </Grid>
+        </Grid>
     )
 
 }
