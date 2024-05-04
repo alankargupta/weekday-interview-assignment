@@ -6,6 +6,7 @@ function Jobs() {
     let jobs = useSelector((store) => store.jobs.jobs)
     const filters = useSelector((store)=>store.filters)
     if(filters.companyName.length>0) jobs = jobs.filter((job)=>(filters.companyName.includes(job.companyName)))
+    if(filters.role.length>0)jobs=jobs.filter((job)=>filters.role.includes(job.jobRole))
 
     return (
         jobs.map(job => {

@@ -6,7 +6,7 @@ import './jobcard.css'
 function JobCard({ data }) {
 
   return (
-    <Card sx={{ height: 380, width: 300, bgcolor: "white", borderRadius: 2, boxShadow: 4 }}>
+    <Card sx={{ height: 400, width: 300, bgcolor: "white", borderRadius: 2, boxShadow: 4 }}>
       <CardContent>
         <Box sx={{ display: "flex" }}>
           <img src={data.logoUrl} alt="company logo" height={40} width={25} />

@@ -9,7 +9,7 @@ function Body() {
     const limit = 10
     const [offset, setOffset] = useState(0)
 
-    async function fetchJobs() {
+    const fetchJobs=async() =>{
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         const body = JSON.stringify({
@@ -30,7 +30,7 @@ function Body() {
     }
 
     const handleScroll = () => {
-        if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+        if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight) {
             setOffset(prevOffset => prevOffset + limit)
         }
     }
@@ -39,9 +39,7 @@ function Body() {
     },[offset])
 
     useEffect(() => {
-        fetchJobs()
         window.addEventListener('scroll', handleScroll);
-
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
