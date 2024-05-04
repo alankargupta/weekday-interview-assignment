@@ -3,8 +3,9 @@ import JobCard from './JobCard'
 import { Grid } from '@mui/material'
 
 function Jobs() {
-    const jobs = useSelector((store) => store.jobs.jobs)
-    console.log(jobs)
+    let jobs = useSelector((store) => store.jobs.jobs)
+    const filters = useSelector((store)=>store.filters)
+    if(filters.companyName.length>0) jobs = jobs.filter((job)=>(filters.companyName.includes(job.companyName)))
 
     return (
         jobs.map(job => {

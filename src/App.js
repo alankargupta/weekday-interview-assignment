@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Filters from "./components/Filters";
 import { Provider } from "react-redux";
 import appStore from "./redux/appStore";
@@ -8,7 +8,9 @@ function App() {
   return (
     <Provider store={appStore}>
       <Container>
-        <Filters />
+        <Box sx={{marginTop:"10px",marginBottom:"30px"}}>
+          <Filters />
+        </Box>
         <Body />
       </Container>
     </Provider>
