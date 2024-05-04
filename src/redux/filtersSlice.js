@@ -5,7 +5,8 @@ const filtersSlice = createSlice({
     initialState:{
         companyName:[],
         role:[],
-        location:[]
+        location:[],
+        remote:[]
     },
     reducers:{
         addCompanyName:(state,action)=>{
@@ -18,10 +19,13 @@ const filtersSlice = createSlice({
         addLocation:(state,action)=>{
             state.location=action.payload
  
+         },
+         addRemote:(state,action)=>{
+            state.remote=action.payload
          }
         
     }
 })
 
 export default filtersSlice.reducer
-export const {addCompanyName,addRole,addLocation}=filtersSlice.actions
+export const {addCompanyName,addRole,addLocation,addRemote}=filtersSlice.actions

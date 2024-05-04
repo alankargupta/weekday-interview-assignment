@@ -5,6 +5,7 @@ import { Box } from '@mui/material'
 import { addCompanies,addLocations,addRoles } from '../redux/filterOptionsSlice'
 import RoleFilter from './RoleFilter'
 import LocationFilter from './LocationFilter'
+import RemoteFilter from './RemoteFilter'
 
 function Filters() {
     const jobs = useSelector((store) => store.jobs.jobs)
@@ -29,6 +30,7 @@ function Filters() {
             <Box sx={{marginLeft:"10px"}}><CompanyNameFilter /></Box>
             <Box sx={{marginLeft:"10px"}}><RoleFilter/></Box>
             <Box sx={{marginLeft:"10px"}}><LocationFilter/></Box>
+            <Box sx={{marginLeft:"10px"}}><RemoteFilter/></Box>
         </Box>)
 
 }
