@@ -7,11 +7,13 @@ import {
   addLocations,
   addRoles,
   addYearsOfExp,
+  addminSalaries,
 } from "../redux/filterOptionsSlice";
 import RoleFilter from "./RoleFilter";
 import LocationFilter from "./LocationFilter";
 import RemoteFilter from "./RemoteFilter";
 import MinExpFilter from "./MinExpFilter";
+import MinBasePayFilter from "./MinBasePayFilter";
 
 function Filters() {
   const jobs = useSelector((store) => store.jobs.jobs);
@@ -29,10 +31,14 @@ function Filters() {
     let yearsOfExp = jobs.map((job) => {
       return job.minExp !== null ? job.minExp : "Not Specified";
     });
+    let minSalaries = jobs.map((job) => {
+      return job.minJdSalary !== null ? job.minJdSalary : "Not Specified";
+    });
     dispatch(addCompanies(companyNames.sort()));
     dispatch(addRoles(roles.sort()));
     dispatch(addLocations(locations.sort()));
     dispatch(addYearsOfExp(yearsOfExp.sort()));
+    dispatch(addminSalaries(minSalaries.sort()));
   }, [jobs, dispatch]);
 
   return (
@@ -51,6 +57,9 @@ function Filters() {
       </Box>
       <Box sx={{ marginLeft: "10px" }}>
         <MinExpFilter />
+      </Box>
+      <Box sx={{ marginLeft: "10px" }}>
+        <MinBasePayFilter />
       </Box>
     </Box>
   );

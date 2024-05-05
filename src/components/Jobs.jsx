@@ -24,6 +24,8 @@ function Jobs({ showShimmer }) {
   } else if (filters.exp.length > 0 && !filters.exp.includes("Not Specified")) {
     jobs = jobs.filter((job) => filters.exp.includes(job.minExp));
   }
+  if (filters.minSalary.length > 0)
+    jobs = jobs.filter((job) => filters.minSalary.includes(job.minJdSalary));
 
   return jobs.map((job) => {
     return (

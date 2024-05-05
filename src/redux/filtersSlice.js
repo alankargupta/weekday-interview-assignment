@@ -8,6 +8,7 @@ const filtersSlice = createSlice({
     location: [],
     remote: [],
     exp: [],
+    minSalary: [],
   },
   reducers: {
     addCompanyName: (state, action) => {
@@ -25,9 +26,18 @@ const filtersSlice = createSlice({
     addExp: (state, action) => {
       state.exp = action.payload;
     },
+    addMinSalary: (state, action) => {
+      state.minSalary = action.payload;
+    },
   },
 });
 
 export default filtersSlice.reducer;
-export const { addCompanyName, addRole, addLocation, addRemote, addExp } =
-  filtersSlice.actions;
+export const {
+  addCompanyName,
+  addRole,
+  addLocation,
+  addRemote,
+  addExp,
+  addMinSalary,
+} = filtersSlice.actions;
