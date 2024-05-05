@@ -9,8 +9,10 @@ function Body() {
   const dispatch = useDispatch();
   const limit = 10;
   const [offset, setOffset] = useState(0);
+  const [showShimmer, setShowShimmer] = useState(false);
 
   const fetchJobs = async () => {
+    setShowShimmer(true);
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const body = JSON.stringify({
@@ -31,6 +33,7 @@ function Body() {
     const json = await result.json();
 
     let jobsUid = json.jdList.map((job) => job.jdUid);
+    setShowShimmer(false);
     dispatch(addJobs(json.jdList));
     dispatch(addJdUids(jobsUid));
   };
@@ -60,7 +63,7 @@ function Body() {
 
       <Grid item xs={12}>
         <Grid container spacing={{ xs: 3 }}>
-          <Jobs />
+          <Jobs showShimmer={showShimmer} />
         </Grid>
       </Grid>
     </Grid>

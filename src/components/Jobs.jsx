@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import JobCard from "./JobCard";
 import { Grid } from "@mui/material";
+import Shimmer from "./Shimmer";
 
-function Jobs() {
+function Jobs({ showShimmer }) {
   let jobs = useSelector((store) => store.jobs.jobs);
   const filters = useSelector((store) => store.filters);
   if (filters.companyName.length > 0)
@@ -27,7 +28,7 @@ function Jobs() {
   return jobs.map((job) => {
     return (
       <Grid item xs={12} md={6} lg={4} key={job.jdUid}>
-        <JobCard data={job} key={job.jdUid} />
+        {showShimmer ? <Shimmer /> : <JobCard data={job} key={job.jdUid} />}
       </Grid>
     );
   });
