@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { addJobs } from "../redux/jobsSlice";
+import { addJdUids, addJobs } from "../redux/jobsSlice";
 import { useDispatch } from "react-redux";
 import Jobs from "./Jobs";
 import { Grid, Box } from "@mui/material";
@@ -30,7 +30,9 @@ function Body() {
     );
     const json = await result.json();
 
+    let jobsUid = json.jdList.map((job) => job.jdUid);
     dispatch(addJobs(json.jdList));
+    dispatch(addJdUids(jobsUid));
   };
 
   const handleScroll = () => {
