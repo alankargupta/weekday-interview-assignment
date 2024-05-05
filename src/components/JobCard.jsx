@@ -5,12 +5,30 @@ import {
   Link,
   Button,
   rgbToHex,
+  DialogTitle,
+  IconButton,
+  DialogContent,
+  Dialog,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/material";
 import "./jobcard.css";
+import { styled } from "@mui/material/styles";
+import { Close } from "@mui/icons-material";
 
 function JobCard({ data }) {
+  const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+    "& .MuiDialogContent-root": {
+      padding: theme.spacing(2),
+    },
+    "& .MuiDialogActions-root": {
+      padding: theme.spacing(1),
+    },
+  }));
+  const [showDialog, setShowDialog] = useState(false);
+  const handleClose = () => {
+    setShowDialog(false);
+  };
   return (
     <Card
       sx={{
@@ -62,13 +80,39 @@ function JobCard({ data }) {
             component="button"
             variant="body2"
             onClick={() => {
-              console.info("I'm a button.");
+              setShowDialog(true);
             }}
             sx={{ marginLeft: "90px" }}
           >
-            View Job
+            Job Description
           </Link>
         </Box>
+        {showDialog ? (
+          <BootstrapDialog
+            onClose={handleClose}
+            aria-labelledby="customized-dialog-title"
+            open={showDialog}
+          >
+            <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+              Job Description
+            </DialogTitle>
+            <IconButton
+              aria-label="close"
+              onClick={handleClose}
+              sx={{
+                position: "absolute",
+                right: 8,
+                top: 8,
+                color: (theme) => theme.palette.grey[500],
+              }}
+            >
+              <Close />
+            </IconButton>
+            <DialogContent dividers>
+              <Typography gutterBottom>{data.jobDetailsFromCompany}</Typography>
+            </DialogContent>
+          </BootstrapDialog>
+        ) : null}
         <Box sx={{ marginTop: "10px" }}>
           <Typography
             sx={{
