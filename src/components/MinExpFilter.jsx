@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCompanyName } from "../redux/filtersSlice";
 import CommonFilter from "./CommonFilter";
+import { addExp } from "../redux/filtersSlice";
 
-function CompanyNameFilter() {
+function MinExpFilter() {
   const [value, setValue] = React.useState([]);
-  const options = useSelector((store) => store.filterOptions.companies);
+  const options = useSelector((store) => store.filterOptions.yearsOfExp);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(addCompanyName(value));
+    dispatch(addExp(value));
   }, [value, dispatch]);
 
   return (
@@ -17,9 +17,9 @@ function CompanyNameFilter() {
       options={options}
       value={value}
       setValue={setValue}
-      label={"Search Company Name"}
+      label={"Min Exp"}
     />
   );
 }
 
-export default CompanyNameFilter;
+export default MinExpFilter;
